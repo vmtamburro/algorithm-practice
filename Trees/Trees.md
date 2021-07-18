@@ -68,3 +68,11 @@ Three types of traversing in a binary search tree
 
 
 Typically, we do InOrder traversals, because we want the nodes to be printed in order.
+
+# BFS vs DFS
+
+BFS stands for Breadth first search.
+- Uses the Queue data structure for finding the shortest path
+- Can be used to find single source shortest path in an unweighted graph, becasue in BFS we reach a vertex with the minimum number of edges from a source vertex
+- More suitable for searching verticies which are closr to the given source.
+- Considers all neighbors first and therefore not suitable for decision making trees used in games or puzzles
