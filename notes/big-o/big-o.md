@@ -20,6 +20,8 @@
 - **O(2^N)**: Exponential time. The run time doubles with each additional element in the input, often seen in recursive algorithms with multiple calls.
 - **O(N!)**: Factorial time. The run time grows factorially, seen in algorithms that generate permutations of the input.
 
+    ![alt text](image-1.png)
+
 ## Analyzing Complexity
 
 - **Drop Constants**: In Big O notation, constants are dropped to focus on the growth rate. For example, O(2N) simplifies to O(N).
