@@ -1,6 +1,15 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using System;
+using Service;
 
-app.MapGet("/", () => "Hello World!");
-
-app.Run();
+namespace app
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var service = new Class1();
+            string message = service.GetMessage();
+            Console.WriteLine(message);
+        }
+    }
+}
