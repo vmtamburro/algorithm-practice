@@ -1,8 +1,10 @@
 ﻿namespace Service;
 
-public class Class1
+public class ConstantTime
 {
-    public string GetMessage(){
-        return "Hello World";
+    public int GetFirstElement(int[] array)
+    {
+        // This operation takes constant time
+        return array[0];
     }
 }
