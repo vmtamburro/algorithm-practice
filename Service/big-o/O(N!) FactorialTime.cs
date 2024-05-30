@@ -3,6 +3,17 @@ using System.Collections.Generic;
 
 public class FactorialTime
 {
+
+    /// <summary>
+    /// Base Case - if it's empty, return a list containing an empty list.
+    /// Recursive case - for each element, generate all permutations of the remaining elements. 
+    /// Add to list of all permutations.
+    /// 
+    /// Permutations have a Factorial Time Complexity O(n!)
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="k"></param>
+    /// <param name="m"></param>
     public void GeneratePermutations(List<int> list, int k, int m)
     {
         if (k == m)

@@ -15,7 +15,15 @@ namespace app
             //ConstantTime();
             //ExponentialTime();
             //LogarithmicTime();
-            LinearithmicTime();
+            //LinearithmicTime();
+            //FactorialTime();
+        }
+
+        private static void FactorialTime(){
+            int[] arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+            var FactorialTime = new FactorialTime();
+            FactorialTime.GeneratePermutations(arr.ToList(), 1, 10);
         }
 
         private static void LinearithmicTime()

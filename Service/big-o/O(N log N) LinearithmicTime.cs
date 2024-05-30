@@ -5,7 +5,7 @@ public class LinearithmicTime
 
     /// <summary>
     /// Linearithmic time, involves a combo of linear and logarithmic operations.
-    /// Merge sort recursievly splits the array in half and then merges the sorted hales. 
+    /// Merge sort recursively splits the array in half and then merges the sorted hales. 
     /// Each split operation takes O(log N), and merging takes O(N) time. 
     /// </summary>
     /// <param name="array"></param>
