@@ -1,5 +1,15 @@
 public class QuadraticTime
 {
+
+    /// <summary>
+    /// Algorithm whose run time is proportional to square of the size of input.
+    /// Typical in algorithms that have nested loops, which iterate over the input size n.
+    /// 
+    /// Outer Loop runs from first element to last element
+    /// Inner Loop compares adjacent elements, and swaps them if they are in the
+    /// wrong order.
+    /// </summary>
+    /// <param name="array"></param>
     public void BubbleSort(int[] array)
     {
         int n = array.Length;
