@@ -2,13 +2,22 @@ using System;
 
 public class LinearithmicTime
 {
+
+    /// <summary>
+    /// Linearithmic time, involves a combo of linear and logarithmic operations.
+    /// Merge sort recursievly splits the array in half and then merges the sorted hales. 
+    /// Each split operation takes O(log N), and merging takes O(N) time. 
+    /// </summary>
+    /// <param name="array"></param>
     public void MergeSort(int[] array)
     {
-        if (array.Length <= 1)
+        if (array.Length <= 1) // array already sorted
             return;
         
-        int mid = array.Length / 2;
-        int[] left = new int[mid];
+
+        // Split the array into two even halves
+        int mid = array.Length / 2; 
+        int[] left = new int[mid]; 
         int[] right = new int[array.Length - mid];
         
         Array.Copy(array, 0, left, 0, mid);
