@@ -8,6 +8,12 @@ namespace app
         static void Main(string[] args)
         {
             BigONotationPactice();
+            ArrayPractice();
+        }
+        
+        public static void ArrayPractice(){
+            var HashTableExample = new HashTableExample();
+            HashTableExample.Test();
         }
 
         public static void BigONotationPactice()
