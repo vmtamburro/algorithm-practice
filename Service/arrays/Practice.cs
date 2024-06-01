@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 public class ArrayPractice
 {
@@ -248,5 +249,54 @@ public class ArrayPractice
         }
 
         return true; // Exactly one character is different
+    }
+
+
+    /* 
+        String Compression
+        Perform basic string compression using the counts of repeated characters.
+        aabcccccaaa => a2b1c5a3.
+
+        - If the compressed string is not smaller than the original string, your method should return the original string.
+        - You can assume the string has only uppercase and lowercase letters
+
+    */
+    public string StringCompression(string str)
+    {
+        // Handle empty string
+        if (string.IsNullOrEmpty(str))
+        {
+            return str;
+        }
+
+        // Use StringBuilder for efficiency
+        StringBuilder compressed = new StringBuilder();
+
+        // Initialize variables
+        char prevChar = str[0];
+        int count = 1;
+
+        // Iterate through the string starting from the second character
+        for (int i = 1; i < str.Length; i++)
+        {
+            if (str[i] == prevChar)
+            {
+                count++;
+            }
+            else
+            {
+                compressed.Append(prevChar).Append(count);
+                prevChar = str[i];
+                count = 1;
+            }
+        }
+
+        // Append the last set of character and count
+        compressed.Append(prevChar).Append(count);
+
+        string compressedStr = compressed.ToString();
+        
+        // Return the original string if the compressed string is not smaller
+        return compressedStr.Length < str.Length ? compressedStr : str;
     }
 }
