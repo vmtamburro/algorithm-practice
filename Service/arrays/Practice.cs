@@ -95,12 +95,12 @@ public class ArrayPractice
         // If palindrome array is greater than 0, return true.
         foreach(var permutation in permutationList){
             var reverse = permutation.Reverse().ToString();
-            if(reverse == permutation){
+            if(reverse.ToLower() == permutation.ToLower()){
                 palindromeList.Add(permutation);
             }
         }
 
-        return false;
+        return palindromeList.Count() > 0;
     }
 
     public void GeneratePermutations(char[] inputStr, int k, int m, List<string> permutationList){
@@ -132,4 +132,35 @@ public class ArrayPractice
         cab
         3 * 2 * 1 = 6 = 3!
     */
+
+
+    /*
+        The O(N!) is not an ideal time complexity. Instead, consider what is unique about a palindrome permutation.
+        - Only one char can have an odd count
+        - All other chars must have even counts
+        - If this is the case, it's a palindrome permutation.
+    */
+    public bool PalandromePermutation(string inputStr){
+        inputStr = inputStr.Replace(" ", "").ToLower(); // remove the whitespace and make it lowercase
+
+        // Create a dictionary for char and frequency
+        Dictionary<char, int> charCounts = new Dictionary<char, int>();
+        foreach(char c in inputStr){
+            if(charCounts.ContainsKey(c)){
+                charCounts[c]++;
+            }
+            else{
+                charCounts[c] = 1;
+            }
+        }
+
+        int oddCount = 0;
+        foreach(var count in charCounts.Values){
+            if(count %2 != 0){
+                oddCount++;
+            }
+        }
+
+        return oddCount <= 1;
+    }
 }
