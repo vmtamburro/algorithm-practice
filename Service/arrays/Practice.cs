@@ -163,4 +163,90 @@ public class ArrayPractice
 
         return oddCount <= 1;
     }
+
+
+    /*
+        Three types of edits can be performed on strings
+            - Insert
+            - Remove
+            - Replace
+        - Given Two strings, write a function to check if they are one edit (or zero edits) away
+
+        pale, ple -> true
+        pales, pale -> false
+        pale, bale -> true
+        pale, bake -> false
+    */
+    public bool OneAway(string str1, string str2){
+        str1 = str1.Replace(" ", "").ToLower();
+        str2 = str2.Replace(" ", "").ToLower();
+
+        if(str1 == str2) return false;
+        var lengthDifference=  Math.Abs(str1.Length - str2.Length) ;
+
+        if(lengthDifference > 1) return false;
+
+        if(lengthDifference == 0){
+            return CheckReplacement(str1, str2);
+        }
+
+        // If length difference is 1, check for insertion or deletion
+        if (lengthDifference == 1)
+        {
+            // Ensure str1 is the shorter one
+            if (str1.Length > str2.Length)
+            {
+                return CheckInsertionOrDeletion(str2, str1);
+            }
+            else
+            {
+                return CheckInsertionOrDeletion(str1, str2);
+            }
+        }
+
+        return false; // default
+      
+    }
+
+    private bool CheckInsertionOrDeletion(string shorter, string longer)
+    {
+        int index1 = 0, index2 = 0;
+
+        while (index1 < shorter.Length && index2 < longer.Length)
+        {
+            if (shorter[index1] != longer[index2])
+            {
+                if (index1 != index2)
+                {
+                    return false; // More than one character is different
+                }
+                index2++; // Move the pointer of the longer string
+            }
+            else
+            {
+                index1++;
+                index2++;
+            }
+        }
+
+        return true; // Only one character was different
+    }
+    private bool CheckReplacement(string str1, string str2)
+    {
+        bool foundDifference = false;
+
+        for (int i = 0; i < str1.Length; i++)
+        {
+            if (str1[i] != str2[i])
+            {
+                if (foundDifference)
+                {
+                    return false; // More than one character is different
+                }
+                foundDifference = true;
+            }
+        }
+
+        return true; // Exactly one character is different
+    }
 }
