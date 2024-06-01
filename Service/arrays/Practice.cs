@@ -73,4 +73,63 @@ public class ArrayPractice
             Quicksort's worst-case performance. Additionally, for small subarrays, it resorts to Insertion sort, which performs well on nearly sorted data.
         */
     }
+
+
+    /// <summary>
+    /// Determine if a string is a permutation of a palindrome.
+    /// EXAMPLE: tact coa
+    /// OUTPUT: "taco cat", "atco cta"
+    /// </summary>
+    /// <param name="inputStr"></param>
+    /// <returns></returns>
+    public bool PalindromePermutation(string inputStr){
+
+        char[] chars = inputStr.ToCharArray();
+       List<string> permutationList = new List<string>();
+       List<string> palindromeList = new List<string>();
+       int k = 0; // starting index
+       int m = chars.Length - 1; // ending index;
+
+       GeneratePermutations(inputStr.ToCharArray(), k, m, permutationList);
+        
+        // If palindrome array is greater than 0, return true.
+        foreach(var permutation in permutationList){
+            var reverse = permutation.Reverse().ToString();
+            if(reverse == permutation){
+                palindromeList.Add(permutation);
+            }
+        }
+
+        return false;
+    }
+
+    public void GeneratePermutations(char[] inputStr, int k, int m, List<string> permutationList){
+        if(k == m){
+            permutationList.Add(inputStr.ToString());
+        }
+        
+       for(var i = k; i <= m; i++){
+            Swap(inputStr, k, i);
+            GeneratePermutations(inputStr, k + 1, m, permutationList);
+            Swap(inputStr, k, i);
+       }
+    }
+
+    private void Swap(char[] charArray, int i, int j)
+    {
+        char temp = charArray[i];
+        charArray[i] = charArray[j];
+        charArray[j] = temp;
+    }
+
+
+    /*
+        abc
+        acb
+        bca
+        bac
+        cba
+        cab
+        3 * 2 * 1 = 6 = 3!
+    */
 }
