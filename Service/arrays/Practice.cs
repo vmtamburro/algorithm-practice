@@ -140,7 +140,7 @@ public class ArrayPractice
         - All other chars must have even counts
         - If this is the case, it's a palindrome permutation.
     */
-    public bool PalandromePermutation(string inputStr){
+    public bool PalindromePermutation_Counts(string inputStr){
         inputStr = inputStr.Replace(" ", "").ToLower(); // remove the whitespace and make it lowercase
 
         // Create a dictionary for char and frequency
