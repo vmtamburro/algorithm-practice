@@ -51,4 +51,37 @@ public class MinBribes
         arr[b] = temp;
     }
 
+
+    public static void minimumBribesAlternate(List<int> q)
+    {
+        int bribeCount = 0;
+        bool chaotic = false;
+
+        for (int i = 0; i < q.Count; i++)
+        {
+            if (q[i] - (i + 1) > 2) // if the value is greater than it's intended position by 2, it's chaotic. Exit early
+            {
+                chaotic = true;
+                break;
+            }
+
+            for (int j = Math.Max(0, q[i] - 2); j < i; j++)
+            {
+                if (q[j] > q[i])
+                {
+                    bribeCount++;
+                }
+            }
+        }
+
+        if (chaotic)
+        {
+            Console.WriteLine("Too chaotic");
+        }
+        else
+        {
+            Console.WriteLine(bribeCount);
+        }
+    }
+
 }
