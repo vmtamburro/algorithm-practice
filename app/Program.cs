@@ -7,22 +7,24 @@ namespace app
     {
         static void Main(string[] args)
         {
-            BigONotationPactice();
-            ArrayPractice();
+            //BigONotationPactice();
+            //HashTablePractice();
+            HourGlassSum.hourglassSum();
+
         }
         
-        public static void ArrayPractice(){
+        public static void HashTablePractice(){
             var HashTableExample = new HashTableExample();
             HashTableExample.Test();
         }
 
         public static void BigONotationPactice()
         {
-            //ConstantTime();
-            //ExponentialTime();
-            //LogarithmicTime();
-            //LinearithmicTime();
-            //FactorialTime();
+            ConstantTime();
+            ExponentialTime();
+            LogarithmicTime();
+            LinearithmicTime();
+            FactorialTime();
         }
 
         private static void FactorialTime(){
