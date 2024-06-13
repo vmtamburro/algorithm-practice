@@ -9,8 +9,15 @@ namespace app
         {
             //BigONotationPactice();
             //HashTablePractice();
-            HourGlassSum();
+            //HourGlassSum();
+            RotateLeft();
 
+        }
+
+        private static void RotateLeft()
+        {
+            List<int> arr = new List<int> { 1, 2, 3, 4, 5 };
+            var newArr = LeftRotation.rotLeft(arr, 4);
         }
 
         private static void HourGlassSum()
