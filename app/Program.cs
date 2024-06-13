@@ -10,8 +10,19 @@ namespace app
             //BigONotationPactice();
             //HashTablePractice();
             //HourGlassSum();
-            RotateLeft();
+            //RotateLeft();
+            MinimumBribes();
+        }
 
+
+        private static void MinimumBribes()
+        {
+            // var arr = new List<int> {4, 1, 2, 3};
+            // var arr = new List<int> {1, 2, 3, 5, 4, 6, 7, 8};
+            //var arr = new List<int>{2, 5, 1, 3, 4};
+
+            var arr = new List<int> { 2, 1, 5, 3, 4 };
+            MinBribes.minimumBribes(arr);
         }
 
         private static void RotateLeft()
