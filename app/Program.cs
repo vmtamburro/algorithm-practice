@@ -11,9 +11,15 @@ namespace app
             //HashTablePractice();
             //HourGlassSum();
             //RotateLeft();
-            MinimumBribes();
+            //MinimumBribes();
+            MinimumSwaps();
         }
 
+        private static void MinimumSwaps()
+        {
+            int[] arr = [4, 3, 1, 2];
+            var numSwaps = MinSwaps.minimumSwaps(arr);
+        }
 
         private static void MinimumBribes()
         {
