@@ -29,7 +29,6 @@ public class ArrayManipulation
             [3,3,3,10,10,8,8,8,1,0]
         The largest value is 10 after all operations are performed.
     */
-
     public static long arrayManipulation(int n, List<List<int>> queries)
     {
         long[] arr = new long[n + 1]; // Using long to avoid integer overflow
@@ -40,14 +39,25 @@ public class ArrayManipulation
             int b = query[1];
             int k = query[2];
 
-            for (int i = a - 1; i < b; i++)
+            arr[a - 1] += k; // Add k at index a-1 (0-based)
+            if (b < n)
             {
-                arr[i] += k; // Directly add k to each element in the range [a-1, b-1]
+                arr[b] -= k; // Subtract k at index b (but not beyond the end of array)
             }
         }
 
-      
-        return arr.ToList().Max();
+        long max = 0;
+        long sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            sum += arr[i];
+            if (sum > max)
+            {
+                max = sum;
+            }
+        }
+
+        return max;
     }
 
 
