@@ -100,7 +100,6 @@ public class DoublyLinkedListExample
     {
         var newNode = new DoublyLinkedListNode(data);
 
-
         // Handle insertion at the beginning or if the list is empty
         if (llist == null || llist.data >= newNode.data)
         {
@@ -111,7 +110,6 @@ public class DoublyLinkedListExample
             }
             return newNode;
         }
-
 
         // Traverse the list to find the insertion point
         DoublyLinkedListNode current = llist;
@@ -130,7 +128,24 @@ public class DoublyLinkedListExample
         newNode.prev = current;
 
         return llist;
+    }
 
+    public static DoublyLinkedListNode reverse(DoublyLinkedListNode llist){
+        var current = llist;
+        if(current == null) return llist;
+
+        while (current != null){
+            var tmp = current.next;
+            current.next = current.prev;
+            current.prev = tmp;
+
+            if(current.prev == null) return current;
+
+            // traverse to "next" node
+            current = current.prev;
+        }
+
+        return null;
 
     }
 

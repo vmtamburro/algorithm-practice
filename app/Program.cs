@@ -17,9 +17,12 @@ namespace app
         private static void LinkedListPractice()
         {
             //Example();
+            //DoublelinkedListInsert();
+            DoubleLinkedListReverse();
+        }
 
-
-
+        private static void DoublelinkedListInsert()
+        {
             DoublyLinkedList llist = new DoublyLinkedList();
 
             llist.InsertNode(2);
@@ -28,8 +31,18 @@ namespace app
 
             DoublyLinkedListNode node = DoublyLinkedListExample.sortedInsert(llist.head, 1);
             llist.PrintDoublyLinkedList(node, " ");
+        }
 
-           // DoublyLinkedListNode llist1 = DoublyLinkedListExample.sortedInsert(llist.head, 5);
+          private static void DoubleLinkedListReverse()
+        {
+            DoublyLinkedList llist = new DoublyLinkedList();
+
+            llist.InsertNode(2);
+            llist.InsertNode(3);
+            llist.InsertNode(4);
+
+            DoublyLinkedListNode node = DoublyLinkedListExample.reverse(llist.head);
+            llist.PrintDoublyLinkedList(node, " ");
         }
 
 
