@@ -9,12 +9,61 @@ namespace app
         {
             //BigONotationPactice();
             //HashTablePractice();
-            //HourGlassSum();
-            //RotateLeft();
-            //MinimumBribes();
-            //MinimumSwaps();
+            //ArrayPractice();
 
+            LinkedListPractice();
+        }
 
+        private static void LinkedListPractice()
+        {
+            Example();
+        }
+
+        private static void Example()
+        {
+            LinkedList list = new LinkedList();
+
+            // Inserting elements
+            list.InsertAtBeginning(3);   // List: 3
+            list.InsertAtBeginning(1);   // List: 1 -> 3
+            list.InsertAtEnd(5);         // List: 1 -> 3 -> 5
+            list.InsertAfterNode(list.head.next, 2); // List: 1 -> 3 -> 2 -> 5
+
+            // Printing the linked list
+            Console.WriteLine("Linked List:");
+            list.PrintList();
+
+            // Deleting an element
+            list.DeleteNode(2);          // List: 1 -> 3 -> 5
+
+            // Printing the linked list after deletion
+            Console.WriteLine("Linked List after deletion:");
+            list.PrintList();
+
+            // Searching for an element
+            int searchValue = 3;
+            bool found = list.Search(searchValue);
+            if (found)
+            {
+                Console.WriteLine($"Element {searchValue} found in the list");
+            }
+            else
+            {
+                Console.WriteLine($"Element {searchValue} not found in the list");
+            }
+        }
+
+        private static void ArrayPractice()
+        {
+            HourGlassSum();
+            RotateLeft();
+            MinimumBribes();
+            MinimumSwaps();
+            ArrayManipulations();
+        }
+
+        private static void ArrayManipulations()
+        {
             int n = 10;
             List<List<int>> queries = new List<List<int>>
             {
@@ -26,9 +75,6 @@ namespace app
 
             long result = ArrayManipulation.arrayManipulation(n, queries);
         }
-
-
-
 
         private static void MinimumSwaps()
         {
