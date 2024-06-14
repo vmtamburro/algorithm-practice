@@ -16,42 +16,56 @@ namespace app
 
         private static void LinkedListPractice()
         {
-            Example();
+            //Example();
+
+
+
+            DoublyLinkedList llist = new DoublyLinkedList();
+
+            llist.InsertNode(2);
+            llist.InsertNode(3);
+            llist.InsertNode(4);
+
+            DoublyLinkedListNode node = DoublyLinkedListExample.sortedInsert(llist.head, 1);
+            llist.PrintDoublyLinkedList(node, " ");
+
+           // DoublyLinkedListNode llist1 = DoublyLinkedListExample.sortedInsert(llist.head, 5);
         }
 
-        private static void Example()
-        {
-            LinkedList list = new LinkedList();
 
-            // Inserting elements
-            list.InsertAtBeginning(3);   // List: 3
-            list.InsertAtBeginning(1);   // List: 1 -> 3
-            list.InsertAtEnd(5);         // List: 1 -> 3 -> 5
-            list.InsertAfterNode(list.head.next, 2); // List: 1 -> 3 -> 2 -> 5
+        // private static void Example()
+        // {
+        //     LinkedList list = new LinkedList();
 
-            // Printing the linked list
-            Console.WriteLine("Linked List:");
-            list.PrintList();
+        //     // Inserting elements
+        //     list.InsertAtBeginning(3);   // List: 3
+        //     list.InsertAtBeginning(1);   // List: 1 -> 3
+        //     list.InsertAtEnd(5);         // List: 1 -> 3 -> 5
+        //     list.InsertAfterNode(list.head.next, 2); // List: 1 -> 3 -> 2 -> 5
 
-            // Deleting an element
-            list.DeleteNode(2);          // List: 1 -> 3 -> 5
+        //     // Printing the linked list
+        //     Console.WriteLine("Linked List:");
+        //     list.PrintList();
 
-            // Printing the linked list after deletion
-            Console.WriteLine("Linked List after deletion:");
-            list.PrintList();
+        //     // Deleting an element
+        //     list.DeleteNode(2);          // List: 1 -> 3 -> 5
 
-            // Searching for an element
-            int searchValue = 3;
-            bool found = list.Search(searchValue);
-            if (found)
-            {
-                Console.WriteLine($"Element {searchValue} found in the list");
-            }
-            else
-            {
-                Console.WriteLine($"Element {searchValue} not found in the list");
-            }
-        }
+        //     // Printing the linked list after deletion
+        //     Console.WriteLine("Linked List after deletion:");
+        //     list.PrintList();
+
+        //     // Searching for an element
+        //     int searchValue = 3;
+        //     bool found = list.Search(searchValue);
+        //     if (found)
+        //     {
+        //         Console.WriteLine($"Element {searchValue} found in the list");
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine($"Element {searchValue} not found in the list");
+        //     }
+        // }
 
         private static void ArrayPractice()
         {
