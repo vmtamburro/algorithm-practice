@@ -13,6 +13,7 @@
     * Each Node points to the next node in sequence
 - Doubly Linked List
     * Each node has pointers to both the next and previous nodes, allowing traversal in both directions
+    ![alt text](image-1.png)
 - Circular Linked List
     * The last node points back to the first node, forming a circle
 
