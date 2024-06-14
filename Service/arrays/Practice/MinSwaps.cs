@@ -20,10 +20,10 @@ public class MinSwapsPractice{
 
 
                     // [*7, 1, 3, 2, 4, 5, 6] 
-                    // [6, *1, 3, 2, 4, 5, 7] Swap Count = 1
-                    // [1, 6, *3, 2, 4, 5, 7] Swap Count = 2
-                    // [1, 6, 3, *2, 4, 5, 7] Swap Count = 2
-                    // [1, 2, 3, 6, *4, 5, 7] Swap Count = 3
-                    // [1, 2, 3, 4, 6, *5, 7] Swap Count = 4
-                    // [1, 2, 3, 4, 5, 6, *7] Swap Count = 4
+                    // [*6, 1, 3, 2, 4, 5, 7] Swap Count = 1
+                    // [1, *6, 3, 2, 4, 5, 7] Swap Count = 2
+                    // [1, *6, 3, 2, 4, 5, 7] Swap Count = 2
+                    // [1, *2, 3, 6, 4, 5, 7] Swap Count = 3
+                    // [1, 2, *3, *4, *6, 5, 7] Swap Count = 4
+                    // [1, 2, 3, 4, *5, 6, 7] Swap Count = 4
 }
