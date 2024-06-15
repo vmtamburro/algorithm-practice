@@ -115,5 +115,38 @@ namespace Example
             tree.DFSPostOrder(tree.Root);
             Console.WriteLine();
         }
+
+
+        public TreeNode BuildBST(int[] values){
+            if(values == null || values.Length == 0){
+                return null;
+            }
+
+            TreeNode root = new TreeNode(values[0]);
+            for(var i =1; i < values.Length; i++){ // start at second index since we already added the first as the root
+               InsertIntoBST(root, values[i]);
+            }
+
+            return root;
+        }
+
+        private static void InsertIntoBST(TreeNode root, int value)
+        {
+            if (value < root.Value)
+            {
+                if (root.Left == null)
+                    root.Left = new TreeNode(value);
+                else
+                    InsertIntoBST(root.Left, value);
+            }
+            else if (value > root.Value)
+            {
+                if (root.Right == null)
+                    root.Right = new TreeNode(value);
+                else
+                    InsertIntoBST(root.Right, value);
+            }
+            // Ignore if value is equal to root.Value (assuming no duplicates in BST)
+        }
     }
 }
