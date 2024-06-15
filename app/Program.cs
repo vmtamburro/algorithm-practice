@@ -19,6 +19,17 @@ namespace app
             //Example();
             //DoublelinkedListInsert();
             DoubleLinkedListReverse();
+
+
+            SinglyLinkedListExample.SinglyLinkedList list1 = new SinglyLinkedListExample.SinglyLinkedList();
+            list1.InsertNode(1);
+            list1.InsertNode(2);
+            list1.InsertNode(3);
+            SinglyLinkedListExample.SinglyLinkedList list2 = new SinglyLinkedListExample.SinglyLinkedList();
+            list2.InsertNode(1);
+            list2.InsertNode(3);
+
+            int output = SinglyLinkedLstExample.findMergeNode(list1, list2);
         }
 
         private static void DoublelinkedListInsert()
