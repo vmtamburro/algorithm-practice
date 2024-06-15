@@ -54,3 +54,51 @@ Traversal Example
 - Breadth-First
     - 1, 2, 3, 4, 5, 6
 
+
+
+## Problems
+
+
+### Tree Height
+
+In the following example, we determine the height of the tree by denoting the number of levels. In the below example, the tree is three levels deep.
+
+```
+        1
+       / \
+      2   3
+     / \   \
+    4   5   6
+```
+
+First we generate the Node data structure for our tree. This will have a property for the value, and two pointers to the left and right nodes.
+
+```cs
+public class Node{
+    public int Value;
+    public Node Left;
+    public Node Right;
+
+    public Node(int value){
+        Value = value;
+        Left = null;
+        Right = null;
+    }
+}
+```
+
+We can then use recursion to determine the height. We do not however want to count each connection between the nodes, which would result in duplicates. If a node has another level (both left and right), we will take the MAX() of their counts (which would be 1) and add a +1 for the current level.
+
+```cs
+
+public static int getHeight(Node root){
+    if(root = null) return -1; // traditionally height is indexed, so an empty tree would be a height of -1
+
+    //recursion! add additional depths
+    var leftDepth = getHeight(root);
+    var rightDepth = getHeight(root);
+
+    return Math.Max(leftDepth, rightDepth) + 1; // the +1 is the counter for this current level
+}
+
+```
