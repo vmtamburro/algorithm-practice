@@ -3,7 +3,7 @@ using Service;
 
 namespace app
 {
-    class Program6
+    class Program
     {
         static void Main(string[] args)
         {
@@ -11,7 +11,25 @@ namespace app
             //HashTablePractice();
             //ArrayPractice();
             //LinkedListPractice();
+            LowestCommonAncestor.Main(["8", "8 4 9 1 2 3 6 5", "1 2"]);
 
+
+        }
+
+       
+
+        private static void LinkedListPractice()
+        {
+            //Example();
+            //DoublelinkedListInsert();
+            DoubleLinkedListReverse();
+            GetHeight();
+
+            //FindMergedNodee();
+        }
+
+        private static void GetHeight()
+        {
             var root = new TreeHeight.Node(4);
             root.Left = new TreeHeight.Node(2);
             root.Right = new TreeHeight.Node(6);
@@ -21,18 +39,6 @@ namespace app
             root.Right.Right = new TreeHeight.Node(7);
 
             int height = TreeHeight.Program.getHeight(root);
-
-
-
-        }
-
-        private static void LinkedListPractice()
-        {
-            //Example();
-            //DoublelinkedListInsert();
-            DoubleLinkedListReverse();
-
-            //FindMergedNodee();
         }
 
         // private static void FindMergedNodee()
