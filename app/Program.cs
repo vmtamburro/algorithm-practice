@@ -3,15 +3,27 @@ using Service;
 
 namespace app
 {
-    class Program
+    class Program6
     {
         static void Main(string[] args)
         {
             //BigONotationPactice();
             //HashTablePractice();
             //ArrayPractice();
+            //LinkedListPractice();
 
-            LinkedListPractice();
+            var root = new TreeHeight.Node(4);
+            root.Left = new TreeHeight.Node(2);
+            root.Right = new TreeHeight.Node(6);
+            root.Left.Left = new TreeHeight.Node(1);
+            root.Left.Right = new TreeHeight.Node(3);
+            root.Right.Left = new TreeHeight.Node(5);
+            root.Right.Right = new TreeHeight.Node(7);
+
+            int height = TreeHeight.Program.getHeight(root);
+
+
+
         }
 
         private static void LinkedListPractice()
@@ -20,17 +32,21 @@ namespace app
             //DoublelinkedListInsert();
             DoubleLinkedListReverse();
 
-
-            SinglyLinkedListExample.SinglyLinkedList list1 = new SinglyLinkedListExample.SinglyLinkedList();
-            list1.InsertNode(1);
-            list1.InsertNode(2);
-            list1.InsertNode(3);
-            SinglyLinkedListExample.SinglyLinkedList list2 = new SinglyLinkedListExample.SinglyLinkedList();
-            list2.InsertNode(1);
-            list2.InsertNode(3);
-
-            int output = SinglyLinkedLstExample.findMergeNode(list1, list2);
+            //FindMergedNodee();
         }
+
+        // private static void FindMergedNodee()
+        // {
+        //     SinglyLinkedListExample.SinglyLinkedList list1 = new SinglyLinkedListExample.SinglyLinkedList();
+        //     list1.InsertNode(1);
+        //     list1.InsertNode(2);
+        //     list1.InsertNode(3);
+        //     SinglyLinkedListExample.SinglyLinkedList list2 = new SinglyLinkedListExample.SinglyLinkedList();
+        //     list2.InsertNode(1);
+        //     list2.InsertNode(3);
+
+        //     int output = SinglyLinkedLstExample.findMergeNode(list1, list2);
+        // }
 
         private static void DoublelinkedListInsert()
         {
