@@ -15,7 +15,7 @@ using System;
 class Solution
 {
 
-    class SinglyLinkedListNode
+    public class SinglyLinkedListNode
     {
         public int data;
         public SinglyLinkedListNode next;
