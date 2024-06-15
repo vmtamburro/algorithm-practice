@@ -208,20 +208,20 @@ Inside of the `AppendNode` method we have several utility methods for ease of ma
 To traverse the node from a specific node point (For example to print each value), we can use a while loop. On each insertion iteration, we update the iterating to be the `next` node. Our break condition is that the `next` node is not null, as it would be on the reference from the tail node.
 
 ```cs
-    public void PrintDoublyLinkedList(DoublyLinkedListNode node, string sep)
+public void PrintDoublyLinkedList(DoublyLinkedListNode node, string sep)
+{
+    while (node != null)
     {
-        while (node != null)
+        Console.WriteLine(node.data);
+
+        node = node.next;
+
+        if (node != null)
         {
-            Console.WriteLine(node.data);
-
-            node = node.next;
-
-            if (node != null)
-            {
-                Console.WriteLine(sep);
-            }
+            Console.WriteLine(sep);
         }
     }
+}
 
 ```
 
@@ -229,7 +229,7 @@ To reverse the linked list, we can use the following utility method. First do a 
 
 ```cs
 
-    public static DoublyLinkedListNode reverse(DoublyLinkedListNode llist) {
+public static DoublyLinkedListNode reverse(DoublyLinkedListNode llist) {
     // Initialize the current node to the head of the list
     var current = llist;
     // If the list is empty, return null
@@ -296,5 +296,84 @@ If we are inserting into the middle or end, we will need to traverse the list to
         newNode.prev = current;
 
         return llist;
+    }
+```
+
+### Finding a Merge Point of a Node
+
+Two linked lists will eventually point to a reference to the same node.  The blow method shows how we can determine at what point the two nodes reference each the same node. 
+
+First, we have to check if the two linked lists are the same length. If not, we will need to fast forward the root of the longer list.
+
+```
+Example: 
+
+1-2-3*-4-5 
+1*-4-5
+```
+
+The `GetLength` method is a simple helper function that increments the count for each node we traverse.
+```cs
+// Helper function to get the length of a linked list
+    private static int GetLength(SinglyLinkedListNode head)
+    {
+        int length = 0;
+        while (head != null)
+        {
+            length++;
+            head = head.next;
+        }
+        return length;
+    }
+
+```
+
+We then continue to the fast-forward operation. First we must determine which node is longer than the other, and fast-forward that linked list. We then decrement the count, which is the difference in length of the two lists, and traverse one node per each count.
+
+
+Finally, we traverse the list to find the merge node, by doing a direct object comparison of `if(head1 == head2)`. If no node is found, we return 0;
+
+```cs
+
+static int findMergeNode(SinglyLinkedListNode head1, SinglyLinkedListNode head2)
+    {
+        // determine the length of each linked list
+        var len1 = GetLength(head1);
+        var len2 = GetLength(head2);
+
+        // advance the longer list to the start index of the second array
+        // ex: [*1 2 3] and [1 *3 2 1]
+        if (len1 > len2)
+        {
+            var count = len1 - len2;
+            while (count > 0 && head1 != null)
+            {
+                head1 = head1.next;
+                count--;
+            }
+        }
+        else
+        {
+            var count = len2 - len1;
+            while (count > 0 && head2 != null)
+            {
+                head2 = head2.next;
+                count--;
+            }
+
+        }
+
+        // traverse to find the merge node
+        while (head1 != null && head2 != null)
+        {
+            if (head1 == head2)
+            {
+                return head1.data;
+            }
+            head1 = head1.next;
+            head2 = head2.next;
+        }
+
+        return 0;
     }
 ```
