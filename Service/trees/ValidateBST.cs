@@ -13,7 +13,10 @@ public class ValidateBinarySearchTree
     }
 
 
-    /* Implement a function to check if a binary tree is a binary search tree */
+    /* 
+        Implement a function to check if a binary tree is a binary search tree 
+        Time Complexity is O(N), Space Complexity is O(H)
+    */
     public bool ValidateBST(Node node){
         return ValidateBST(node, int.MinValue, int.MaxValue);
     }
