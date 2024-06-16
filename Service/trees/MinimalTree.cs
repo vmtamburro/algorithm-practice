@@ -1,3 +1,5 @@
+using System.Linq;
+
 public class MinimalTree{
 
 
@@ -20,7 +22,26 @@ public class MinimalTree{
         Need to match the number of nodes in the left and right subtrees. We want the root to be the middle of the array.
         Each following sub-tree needs to follow the same behavior.
     */
-    public void BuildMinimalTree(int[] arr){
+    
+    public Node CreateMinimalTree(int[] arr)
+    {
+        if (arr == null || arr.Length == 0)
+            return null;
 
+        return CreateMinimalTree(arr, 0, arr.Length - 1);
+    }
+
+    private Node CreateMinimalTree(int[] arr, int start, int end)
+    {
+        if (start > end)
+            return null;
+
+        int mid = (start + end) / 2;
+        Node node = new Node(arr[mid]);
+
+        node.Left = CreateMinimalTree(arr, start, mid - 1);
+        node.Right = CreateMinimalTree(arr, mid + 1, end);
+
+        return node;
     }
 }
