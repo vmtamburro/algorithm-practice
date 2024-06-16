@@ -10,6 +10,8 @@ public class RouteBetweenNodes{
 
         var visited = new HashSet<int>();
         var queue = new Queue<int>();
+        queue.Enqueue(start);
+        visited.Add(start);
 
         while(queue.Count > 0){
             var vertex = queue.Dequeue();
@@ -19,6 +21,27 @@ public class RouteBetweenNodes{
                 if(!visited.Contains(neighbor)){
                     visited.Add(neighbor);
                     queue.Enqueue(neighbor);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public bool SearchDFS(Graph g, int start, int end){
+            var visited = new HashSet<int>();
+            return DFSUtil(g.adjacencyList, start, end, visited);
+    }
+
+    public bool DFSUtil(Dictionary<int, List<int>> adjacencyList, int start, int end, HashSet<int> visited){
+        if(start == end) return true;
+
+        visited.Add(start);
+
+        foreach(var neighbor in adjacencyList[start]){
+            if(!visited.Contains(neighbor)){
+                if(DFSUtil(adjacencyList, neighbor, end, visited)){
+                    return true;
                 }
             }
         }
