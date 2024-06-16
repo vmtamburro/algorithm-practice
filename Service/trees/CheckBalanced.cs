@@ -33,5 +33,29 @@ public class CheckBalanced{
 
     /*
         Above solution is not very efficient. O(N * log(N)), we call the getHeight repeatedly on the same nodes. 
+        Instead  check the actual height. each depth. If it's not balanced, return an error code.
+        Runs O(N) time complexity and O(H) space complexity where h is the height of the tree
     */
+
+    public bool isBalancedAlt(Node root){
+        return checkHeight(root) != int.MinValue;
+    }
+
+    public int checkHeight(Node root){
+        if(root == null) return -1;
+
+        int leftHeight = checkHeight(root.Left);
+        if(leftHeight == int.MinValue) return int.MinValue;
+
+        int rightHeight = checkHeight(root.Right);
+        if(rightHeight == int.MinValue) return int.MinValue;
+
+        int heightDiff = leftHeight - rightHeight;
+        if(Math.Abs(heightDiff) > 1){
+            return int.MinValue;
+        }
+        else{
+            return Math.Max(rightHeight, leftHeight) + 1;
+        }
+    }
 }
