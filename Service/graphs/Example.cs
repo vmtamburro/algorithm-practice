@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Example{
     public class Graph{
         // Dictionary to store adjacency list
-        private Dictionary<int, List<int>> adjacencyList;
+        public Dictionary<int, List<int>> adjacencyList;
 
         //Constructor
         public Graph(){
