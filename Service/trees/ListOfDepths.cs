@@ -36,4 +36,38 @@ public class ListOfDepths{
         CreateLevelLinkedList(root, lists, 0);
         return lists;
     }
+
+
+    // BFS Alternative
+    public List<List<Node>> AlternateCreate(Node root){
+        var lists = new List<List<Node>>();
+        var current = new List<Node>();
+        if(root != null){
+            current.Add(root);
+        }
+        while(current.Count() > 0){
+            lists.Add(current); // add previous level
+            List<Node> parents = current; // reset current to next level
+            current = new List<Node>();
+            foreach(var parent in parents){ // loop through this new level, find all left and right nodes
+                if(parent.Left != null){
+                    current.Add(parent.Left);
+                }
+
+                if(parent.Right != null){
+                    current.Add(parent.Right);
+                }
+            }
+        }
+
+        return lists;
+    }
 }
+
+/* 
+    Both algorithms require O(N) where N is the number of nodes in the Binary Tree.
+    It is only processed once
+
+    Space complexity for the first solution is O(logN) due to recursive calls on the call stack.
+    The second has a space complexity of O(N) where all nodes are stored.
+*/
