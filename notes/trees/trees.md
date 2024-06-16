@@ -1,4 +1,4 @@
-# Trees and Graphs Overview
+# Trees Overview
 
 1. Basics
 * Tree: Data structure consisting of nodes, with each node having zero or more child nodes. Starts with a root and branches out into child Nodes
