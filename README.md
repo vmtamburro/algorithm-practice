@@ -1,2 +1,2 @@
 # algorithm-practice
-Practice for astering data structures and algorithms in c#
+Practice for mastering data structures and algorithms in c#
