@@ -21,4 +21,20 @@ public class Euler1
 
         Console.WriteLine(sum);
     }
+
+
+    /* 
+        Improvements:
+            - Remove Magic Num
+            - Instead oof O(N) iterating over the entire set, you could use a formula to compute the sum directly. This could reduce time complexity to O(1)
+
+            int sum = SumDivisibleBy(3) + SumDivisibleBy(5) - SumDivisibleBy(15);
+
+            int SumDivisibleBy(int n)
+            {
+                int p = (limit - 1) / n;
+                return n * p * (p + 1) / 2;
+            }
+
+    */
 }
