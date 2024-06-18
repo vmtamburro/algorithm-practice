@@ -18,8 +18,8 @@ public class BuildOrder
         - If things are remaining and they still have dependencies, there's no way to build the project, throw an error
 
 
-    */
-
+    
+    *********************Initial Implementation **********************
 
     public List<char> BuildSolution(char[] arr, char[][] dependencies)
     {
@@ -75,6 +75,81 @@ public class BuildOrder
 
 
     }
+
+
+
+    Issues:
+
+    1. Graph representation is a list of projects tha it depends on. Typically the reverse is done, so this makes checking dependencies more cumbersome.
+    2. Efficiency of dependency checks. graph.Where(x => x.Value.Count() == 0 && !finalOrder.Contains(x.Key)) is called multiple times, and it performs a linear scan of the dictionary and the final order list each time. This can be inefficient for large input sizes.
+    3. Maintaining final order: Using finalOrder.Contains(x.Key) inside the loop can lead to inefficient searches since Contains is O(n) for a list. Using a HashSet to track completed projects would be more efficient.
+    4. The inner loop and the repeated filtering of projects can be optimized. Removing items from the list of dependencies is done in a nested loop, which can be optimized.
+    */
+
+
+    public List<char> BuildSolution(char[] arr, char[][] dependencies)
+    {
+        Dictionary<char, List<char>> graph = new Dictionary<char, List<char>>();
+        Dictionary<char, int> inDegree = new Dictionary<char, int>();
+        List<char> finalOrder = new List<char>();
+
+        // Initialize graph and in-degree dictionary
+        foreach (var project in arr)
+        {
+            graph[project] = new List<char>();
+            inDegree[project] = 0;
+        }
+
+        // Build the graph and populate in-degree
+        foreach (var dep in dependencies)
+        {
+            var parent = dep[0];
+            var child = dep[1];
+            graph[parent].Add(child);
+            inDegree[child]++;
+        }
+
+        // Queue for projects with no dependencies
+        Queue<char> toBuild = new Queue<char>();
+
+        foreach (var project in inDegree.Where(p => p.Value == 0).Select(p => p.Key))
+        {
+            toBuild.Enqueue(project);
+        }
+
+        // Process the projects
+        while (toBuild.Count > 0)
+        {
+            var proj = toBuild.Dequeue();
+            finalOrder.Add(proj);
+
+            foreach (var dependent in graph[proj])
+            {
+                inDegree[dependent]--;
+
+                if (inDegree[dependent] == 0)
+                {
+                    toBuild.Enqueue(dependent);
+                }
+            }
+        }
+
+        // Check if all projects are in the build order
+        if (finalOrder.Count != arr.Length)
+        {
+            throw new Exception("No valid build order exists.");
+        }
+
+        return finalOrder;
+    }
+
+
+    /* Improvements
+        - Make key a project, and value the dependencies. Maintain an in-degree dictionary to count the number of dependencies the project has.
+        - Use a queue to manage projects that can be built next. Avoids repeatedly filtering the list
+        - Queue ensures we process each project once, adding dependents when their in-degree reaches zero
+    */
+
 
 
 
