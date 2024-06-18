@@ -147,7 +147,7 @@ public class BuildOrder
     /* Improvements
         - Make key a project, and value the dependencies. Maintain an in-degree dictionary to count the number of dependencies the project has.
         - Use a queue to manage projects that can be built next (BFS). Avoids repeatedly filtering the list
-        - Queue ensures we process each project once, adding dependents when their in-degree reaches zero
+        - Queue ensures we process each project once, adding dependents when their in-degree reaches zero (Topological Sorting)
     */
 
 
