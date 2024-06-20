@@ -5,7 +5,7 @@ public class Euler10{
         Find the Sum of all primes below Two Million.
 
 
-        Use the Sieve of Eratosthenes.
+        Use the Sieve of Eratosthenes. O(n Log(Log(n)))
 
     */
 
