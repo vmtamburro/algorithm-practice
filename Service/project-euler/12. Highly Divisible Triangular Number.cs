@@ -8,42 +8,44 @@ public class Euler12
         28 is the firs triangle to have over 5 divisors. Which is the value of the first triangle number to have over five hundred divisors.
     */
 
-    public int FindTriangleNumberByDivisorCount(int minNumDivisors){
-        minNumDivisors  = 500;
-        int numDivisors = 0;
-        List<int> naturalNumbers = new List<int>(){1};
+   public int FindTriangleNumberByDivisorCount(int minNumDivisors)
+    {
+        int triangleNum = 0;
+        int n = 1;
 
-        while(numDivisors < minNumDivisors){
-            naturalNumbers.Add(naturalNumbers.Max() + 1);
-            var triangleNum = naturalNumbers.Sum();
+        while (true)
+        {
+            triangleNum += n; // Generate triangle number directly
+            n++;
+
+            int divisorCount = GetDivisorCount(triangleNum);
             
-            var divisorCount = GetAllFactors(triangleNum).Count();
-            
-            if(divisorCount > minNumDivisors){
+            if (divisorCount > minNumDivisors)
+            {
                 return triangleNum;
             }
         }
-        return -1;
     }
 
-     public List<int> GetAllFactors(int n)
+    private int GetDivisorCount(int n)
     {
-        List<int> factors = new List<int>();
+        int count = 0;
+        int sqrtN = (int)Math.Sqrt(n);
 
-        // Check for divisors up to the square root of n
-        for (int i = 1; i <= Math.Sqrt(n); i++)
+        for (int i = 1; i <= sqrtN; i++)
         {
             if (n % i == 0)
             {
-                factors.Add(i);
-                if (i != n / i) // Avoid adding the square root twice for perfect squares
-                {
-                    factors.Add(n / i);
-                }
+                count += 2; // Count both i and n / i as divisors
             }
         }
 
-        factors.Sort(); // Sorting the factors in ascending order
-        return factors;
+        // Adjust count if n is a perfect square
+        if (sqrtN * sqrtN == n)
+        {
+            count--;
+        }
+
+        return count;
     }
 }
