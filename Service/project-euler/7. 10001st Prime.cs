@@ -4,6 +4,9 @@ public class Euler7
         By listing the first six prime numbers 2, 3, 5, 6, 11, 13, we can see that the 6th prime is 13.
 
         What is the 10001st prime?
+
+
+        Time Complexity is O(sqrt(n)) for prime checking, and O(n logn) for the iterations required.
     */
 
     public int FindNthPrime()
