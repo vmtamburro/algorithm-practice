@@ -21,7 +21,9 @@ public class Euler4{
     public bool IsPalindrome(int n){
         var s = n.ToString();
         int len = s.Length;
+        // loop through half of the string
         for(int i = 0; i < len / 2; i++){
+            //palindrome check
             if(s[i] != s[len-i-1]){
                 return false;
             }
@@ -37,10 +39,10 @@ public class Euler4{
         for (int i = 999; i >= 100; i--){
             for(int j = 999; j >= i; j--){
                 int product = i * j;
-                if(product <= largestPalindrome){
-                    break;
+                if(product <= largestPalindrome){ 
+                    break; // skip unnecessary checks since the product of the two numbers only gets smaller.
                 }
-                if(IsPalindrome(product)){
+                if(IsPalindrome(product)){ // check if the product s a palindrome
                     largestPalindrome = product;
                     factor1 = i;
                     factor2 = j;
