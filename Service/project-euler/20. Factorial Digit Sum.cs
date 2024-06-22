@@ -11,7 +11,7 @@ public class Euler20{
         Find the sum of the digits in the number 100!
     */
 
-    public int FactorialDigitSum(){
+    public int FactorialDigitSum(int n = 100){
         BigInteger factorial = CalculateFactorial(n);
         
         int sumOfDigits = SumDigits(factorial);
