@@ -19,36 +19,49 @@ public class Euler14{
     */
 
 
-    public int FindMaxCollatzSequence(int num){
-        num = 1000000;
-        var max = 0;
+    public int FindLongestCollatzSequence(int limit = 1000000)
+    {
+        int maxLength = 0;
+        int startingNumber = 0;
+        var memo = new Dictionary<long, int>();
 
-        while(num > 0){
-            var sequence = CollatzCounter(num);
-            if(sequence > max){
-                max = sequence;
+        for (int i = 1; i < limit; i++)
+        {
+            int length = CollatzCounter(i, memo);
+            if (length > maxLength)
+            {
+                maxLength = length;
+                startingNumber = i;
             }
-            num--;
         }
 
-        return max;
+        return startingNumber;
     }
 
-    public int CollatzCounter(int term){
-        var sequenceCount = 1;
-        while (term != 1){
-
-            if(term %2 == 0){
-                term /= 2;
-            }
-            else{
-                term = (3 * term) + 1;
-            }
-
-            sequenceCount++;
+     private int CollatzCounter(long term, Dictionary<long, int> cache)
+    {
+        if (term == 1)
+        {
+            return 1;
         }
 
-        return sequenceCount;
+        if (cache.ContainsKey(term))
+        {
+            return cache[term];
+        }
 
-    } 
+        int nextTermCount;
+        if (term % 2 == 0)
+        {
+            nextTermCount = CollatzCounter(term / 2, cache);
+        }
+        else
+        {
+            nextTermCount = CollatzCounter(3 * term + 1, cache);
+        }
+
+        int sequenceCount = 1 + nextTermCount;
+        cache[term] = sequenceCount;
+        return sequenceCount;
+    }
 }
