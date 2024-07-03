@@ -119,6 +119,32 @@ public class RedBlackTree{
         return root;
     }
 
+
+   // Search method
+    public bool Search(int value)
+    {
+        return SearchNode(root, value);
+    }
+
+    private bool SearchNode(Node node, int value)
+    {
+        // Base case: Node is null (not found)
+        if (node == null)
+            return false;
+
+        // Check if the value is equal to the current node's value
+        if (value == node.Data)
+            return true;
+
+        // Recursively search left subtree if value is less than current node's value
+        if (value < node.Data)
+            return SearchNode(node.Left, value);
+        
+        // Recursively search right subtree if value is greater than current node's value
+        return SearchNode(node.Right, value);
+    }
+
+
      // Helper function to find the node with the minimum value
     private Node MinimumValueNode(Node node)
     {
