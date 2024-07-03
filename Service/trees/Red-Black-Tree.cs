@@ -65,6 +65,71 @@ public class RedBlackTree{
         return node;
     }
 
+
+    private Node DeleteNode(Node root, int value){
+        if(root == null) return root;
+
+        if(value < root.Data){
+            root.Left = DeleteNode(root.Left, value);
+        }
+        else if(value > root.Data){
+            root.Right = DeleteNode(root.Right, value);
+        }
+        else{
+            // Case 1: Node has no children or only one child
+            if (root.Left == null || root.Right == null)
+            {
+                Node temp = root.Left ?? root.Right;
+
+                // Case 1.1: Node has no children
+                if (temp == null)
+                {
+                    temp = root;
+                    root = null;
+                }
+                // Case 1.2: Node has one child
+                else
+                {
+                    // Copy the contents of the non-null child
+                    root = temp;
+                }
+                temp = null; // Free memory
+            }
+            else
+            {
+                // Case 2: Node has two children
+                // Find the minimum value node in the right subtree
+                Node temp = MinimumValueNode(root.Right);
+
+                // Copy the minimum value node's content to this node
+                root.Data = temp.Data;
+
+                // Delete the minimum value node
+                root.Right = DeleteNode(root.Right, temp.Data);
+            }
+        }
+
+        // If the tree had only one node then return
+        if (root == null)
+            return root;
+
+        // Step 2: Balance the tree
+        // TODO: Implement balancing code here
+
+        return root;
+    }
+
+     // Helper function to find the node with the minimum value
+    private Node MinimumValueNode(Node node)
+    {
+        Node current = node;
+        while (current.Left != null)
+        {
+            current = current.Left;
+        }
+        return current;
+    }
+
     // Helper methods for rotations and color flipping
     private bool IsRed(Node node)
     {
