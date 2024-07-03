@@ -59,3 +59,95 @@ In this example, B stands for black nodes, and R stands for red nodes. Each path
 ### Use Cases
 
 Red-black trees are used in various applications where balanced trees are needed, such as in the implementation of associative arrays (e.g., std::map in C++ and TreeMap in Java) and sets.
+
+
+### Simple Insertion Example
+
+1. **Insert 10:** Insert the first node. Since it's the only node it automatically becomes the root.
+```markdown
+     10 (Black)
+```
+
+2. **Insert 20:** Insert the next node, which is greater than the root (10).
+
+```mathematica
+     10 (Black)
+        \
+        20 (Red)
+```
+
+
+3. **Insert 30:** Insert the next node, which is greater than the root and its right child
+```mathematica
+     10 (Black)
+        \
+        20 (Red)
+           \
+           30 (Red)
+
+```
+The tree now violates the red-black property that red nodes cannot have red children, so we perform rotations and color flips.
+
+* Perform a Left Rotation on node 10:
+```mathematica
+      20 (Black)
+     /   \
+10 (Red)  30 (Red)
+```
+
+* Flip colors of nodes 10 and 30
+```mathematica
+      20 (Black)
+     /   \
+10 (Black)  30 (Black)
+
+```
+
+4. **Insert 15**:  
+Insert a node between existing nodes (10 and 20).
+
+```mathematica
+       20 (Black)
+      /   \
+ 10 (Black)  30 (Black)
+   \
+   15 (Red)
+```
+
+The tree now has a red violation with node 15 and its parent, node 10 being red. Perform rotations and color flips to fix this.
+
+- Perform a **Right Rotation** on node 20:
+```mathematica
+     10 (Black)
+    /   \
+15(Red)   20 (Black)
+            \
+            30 (Black)
+```
+
+- **Flip Colors** of nodes 10 and 20:
+
+```mathematica
+    10 (Black)
+    /   \
+15(Red)   20 (Red)
+          \
+           30 (Black)
+```
+
+#### Final Red-Black Tree Structure
+
+After inserting nodes 10, 20, 30, and 15, the red-black tree structure looks like this:
+
+
+```mathematica
+       10 (Black)
+      /   \
+(Red)15   20 (Red)
+           \
+           30 (Black)
+```
+
+#### Time and Space Complexity
+
+The time complexity of a Red-Black insertion is O(log n), and the space complexity is O(1)
