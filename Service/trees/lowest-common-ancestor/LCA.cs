@@ -49,6 +49,9 @@ public class LCA{
 
 
         ** Handle edge case where one or the other value doesn't exist.
+
+        Time Complexity O(n) for a skewed tree, O(log n) for a balanced tree
+        Space Complexity O(h) because of the recursive stack
     */
 
     public class Node{
