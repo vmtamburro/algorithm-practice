@@ -50,4 +50,32 @@ public class LCA{
 
         ** Handle edge case where one or the other value doesn't exist.
     */
+
+    public class Node{
+        public Node Left;
+        public Node Right;
+        public int Data;
+        public Node(int data){
+            this.Left = null;
+            this.Right = null;
+            this.Data = data;
+        }
+    }
+
+    public Node? LowestCommonAncestor(Node root, Node p, Node q){
+        if(root == null){
+            return null;
+        }
+
+
+        if(root.Data > p.Data && root.Data > q.Data){
+            return LowestCommonAncestor(root.Left, p, q);
+        }
+
+        if(root.Data < p.Data  && root.Data < q.Data){
+            return LowestCommonAncestor(root.Right, p, q);
+        }
+
+        return root;
+    }
 }
