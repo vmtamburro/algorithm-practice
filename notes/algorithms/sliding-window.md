@@ -1,3 +1,5 @@
+# Sliding Window Algorithm
+
 The sliding window algorithm is a useful technique for solving problems that involve working with a subset of data in a sequential manner. It is often used in problems that involve arrays or strings. The main idea is to maintain a window that slides over the data structure to keep track of a subset of elements and efficiently compute some property of that subset.
 
 ### Key Concepts
