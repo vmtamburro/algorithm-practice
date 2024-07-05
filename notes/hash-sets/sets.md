@@ -5,6 +5,18 @@
 - **Sets** are collections of unique elements.
 - In C#, the `HashSet<T>` class, defined in the `System.Collections.Generic` namespace, is commonly used to represent a set.
 
+
+- **Hash Tables**:
+    -  Data structure that maps key-value pairs where each key is unique
+    - Hash Function maps the keys to indices in an array called a has table
+    - Implementation
+        - Array: Hash table is typically implemented using an array of linked lists.
+        - Hash Function: Converts keys into indices in the array.
+    - Operations
+        - Insertion: Insert a key-value pair into the hash table
+        - Lookup: Find the value associated with a given key.
+        - Deletion: Remove a key-value pair from the hash table.
+
 #### Creating a Set
 
 - **Declaration**:

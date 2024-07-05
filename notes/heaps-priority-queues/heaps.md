@@ -13,7 +13,7 @@ Heap Properties:
 
 2. Priority Queues
 
-A priority queue is an abstract data type similar to a regular queue or stack data structure, but where each element has a priority associated with it. Ina  priority queue, an element with high priority is served before an element with low priority.
+A priority queue is an abstract data type similar to a regular queue or stack data structure, but where each element has a priority associated with it. In a  priority queue, an element with high priority is served before an element with low priority.
 
 Priority queues can be efficiently implemented using heaps.
 
