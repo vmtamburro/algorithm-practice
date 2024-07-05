@@ -10,7 +10,12 @@ public class CheckValid{
         }
     }
 
-    public bool IsValidBsTree(Node root){
+    /*
+        - Time Complexity is O(n) where n is the number of nodes in the binary tree
+        - Space Complexity is O(n) because of the recursive call stack and depth first search traversal
+    */
+
+    public bool IsValidBinarySearchTree(Node root){
         return IsValid(root, Int32.MinValue, Int32.MaxValue);
     }
 
