@@ -8,7 +8,7 @@ A heap is a specialized tree-based data structure that satisfies the heap proper
 
 Heap Properties:
 - Heaps are complete binary trees, meaning all levels are fully filled except possibly for the last level which is filled from left to right.
--In a max-heap, each parent node is greater than or equal to its children.
+- In a max-heap, each parent node is greater than or equal to its children.
 - In a min-heap, each parent node is less than or equal to its children.
 
 2. Priority Queues
