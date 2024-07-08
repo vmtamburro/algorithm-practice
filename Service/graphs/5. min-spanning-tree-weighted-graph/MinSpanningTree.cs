@@ -80,11 +80,13 @@ public class Graph
 // Simple priority queue implementation using a sorted list
 public class PriorityQueue<T>
 {
+    // main data structure. Stores elements (queue) based on their priority (int)
     private SortedList<int, Queue<T>> _sortedList = new SortedList<int, Queue<T>>();
     private Comparison<T> Comparison;
 
     public int Count { get; private set; }
 
+    // Constructor to initialize the priority queue with a dynamic comparison function
     public PriorityQueue(Comparison<T> comparison)
     {
         Comparison = comparison;
@@ -92,10 +94,12 @@ public class PriorityQueue<T>
 
     public void Enqueue(T item, int priority)
     {
+        // If the priority is not in the sorted list, add it
         if (!_sortedList.ContainsKey(priority))
         {
             _sortedList[priority] = new Queue<T>();
         }
+        // Add the item to the queue with the corresponding priority
         _sortedList[priority].Enqueue(item);
         Count++;
     }
