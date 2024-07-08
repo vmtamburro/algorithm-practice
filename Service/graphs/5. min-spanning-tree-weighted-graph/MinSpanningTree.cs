@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 public class Graph
 {
+
+    /* 
+        Prim's Algorithm
+        - Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.
+        - Time Complexity O(V^2) using adjacency matrix, O(E log V) using adjacency list and priority queue
+        - Space Complexity O(V + E) for the adjacency list and priority queue
+    */
     private int V;  // Number of vertices
     private List<(int, int)>[] adjacencyList;  // Adjacency list representation of the graph
 
