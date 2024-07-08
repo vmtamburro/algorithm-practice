@@ -13,6 +13,14 @@ public class MazeSolver{
                     - If the neighbor is not visited
                         - Add the neighbor to the queue and visited set
             - Return the steps
+
+
+            - Space Complexity (O(V + E))
+                - V is the number of vertices to be processed
+                - E is the number of edges to be processed
+            - Time Complexity (O(V + E))
+                - V is the number of vertices to be processed
+                - E is the number of edges to be processed
     */
     public class Graph{
         public Dictionary<int, List<int>> adjacencyList;
