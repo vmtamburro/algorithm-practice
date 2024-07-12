@@ -1,6 +1,6 @@
 using System;
 
-public class Solution {
+public class MarkAndToys {
     public static int MaximumToys(int[] prices, int k) {
         // Implement your solution here
         
