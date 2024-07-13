@@ -29,7 +29,7 @@
 * Subtree Checking: Determining if one tree is a subtree of another
 * Tree Reconstruction: Rebuilding a tree from traversal results (e.g. in-order and pre-order)
 * Tree Height and Depth: Calculating the height (max depth) of a tree
-* Binary Heap: A complete binary tree often implemented as an array where the parent node iis either greater (max heap) or smaller (min heap) than its children
+* Binary Heap: A complete binary tree often implemented as an array where the parent node is either greater (max heap) or smaller (min heap) than its children
 
 6. Special Trees
 * Tries (Prefix Trees): A tree-like data structure that stores a dynamic set of strings, where keys are usually strings. Used for efficient retrieval
