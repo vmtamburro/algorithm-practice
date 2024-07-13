@@ -2,7 +2,7 @@
 
 ### Definition
 
-- Linear ata structure where each element (node) is a separate obj
+- Linear data structure where each element (node) is a separate obj
 - Each node contains twp parts
   - Data
   - Reference (link) to the next node
