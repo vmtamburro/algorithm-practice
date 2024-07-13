@@ -36,15 +36,17 @@ public class Successor{
     public Node InOrderSuccessor(Node node){
         if(node == null) return null;
 
+        // If the node has a right child, the successor is the leftmost node in the right subtree
         if(node.Right != null){
-            return LeftChild(node);
+            return LeftChild(node.Right);
         }
         else{
+            // If the node has no right child, we need to find the nearest ancestor for which the node is in the left subtree
             Node q = node;
             Node x = q.Parent;
             while (x != null && x.Left != q){
-                q = x; //set the old parent to q
-                x = x.Parent; // set x to the current parent
+                q = x; // Move up the tree
+                x = x.Parent; // Move to the parent
             }
             return x;
         }
