@@ -1,4 +1,4 @@
-using System;
+using System;  
 namespace app
 {
     class Program
@@ -10,11 +10,24 @@ namespace app
             //ArrayPractice();
             //LinkedListPractice();
             //LowestCommonAncestor.Main(["8", "8 4 9 1 2 3 6 5", "1 2"]);
-            var test = CountingInversions.CountInversions(new int[] { 38, 27, 43, 3, 9, 82, 10 });
+            //var test = CountingInversions.CountInversions(new int[] { 38, 27, 43, 3, 9, 82, 10 });
+            PrimsAlgorithm();
 
         }
 
-       
+        private static void PrimsAlgorithm()
+        {
+            WeightedGraphPractice.DirectedWeightedGraph directedGraph = new WeightedGraphPractice.DirectedWeightedGraph();
+            directedGraph.AddEdge(0, 1, 5);
+            directedGraph.AddEdge(0, 2, 3);
+            directedGraph.AddEdge(1, 3, 6);
+            directedGraph.AddEdge(1, 2, 2);
+            directedGraph.AddEdge(2, 4, 4);
+            directedGraph.AddEdge(2, 5, 2);
+
+            directedGraph.PrimsAlgorithm_FindMinimumSpanningTree();
+        }
+
 
         private static void LinkedListPractice()
         {
