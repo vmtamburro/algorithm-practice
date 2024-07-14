@@ -13,7 +13,7 @@ public class WeightedGraphPractice{
         }
     }
 
-    public class UndirectedUnWeightedGraph: Graph{
+    public class UndirectedWeightedGraph: Graph{
         public void AddEdge(int source, int destination, int weight){
             if(!graph.ContainsKey(source)){
                 AddVertex(source);
