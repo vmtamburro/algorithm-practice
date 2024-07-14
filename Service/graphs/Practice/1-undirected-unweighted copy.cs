@@ -26,6 +26,7 @@ public class GraphPractice{
 
             // add the destination node to the source node's list
             this.graph[source].Add(destination);
+            this.graph[destination].Add(source); // since this is an undirected graph, we'll add the source to the destination's list as well
         }
 
         public void BFS(int startVertex){
