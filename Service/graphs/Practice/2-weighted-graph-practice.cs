@@ -112,5 +112,56 @@ public class WeightedGraphPractice{
                 graph[vertex] = new List<(int destination, int weight)>();
             }
         }
+
+
+        public void PrimsAlgorithm_FindMinimumSpanningTree(){
+            var parent = new int[graph.Count];
+            var key = new int[graph.Count]; // key values used to pick minimum weight edge
+            var mstSet = new bool[graph.Count]; // set to keep track of vertices included in MST
+
+            for(int i = 0; i < graph.Count; i++){
+                key[i] = int.MaxValue;
+                mstSet[i] = false;
+            }
+
+            key[0] = 0; // key value of the first vertex is always 0
+            parent[0] = -1; // first node is always the root of MST
+
+            for(int count = 0; count < graph.Count - 1; count++){
+                // get the minimum key vertex from the set of verticies not yet visited
+                int u = MinKey(key, mstSet);
+                // set picked vertex to visited
+                mstSet[u] = true;
+
+                // update the key value and parent index of the adjacent vertices of the picked vertex
+                foreach(var neighbor in graph[u]){
+                    // only update if the vertex is not in the MST set and the weight is less than the current key value
+                    if(!mstSet[neighbor.destination] && neighbor.weight < key[neighbor.destination]){
+                        parent[neighbor.destination] = u;
+                        key[neighbor.destination] = neighbor.weight;
+                    }
+                }
+            }
+
+            for(int i = 1; i < graph.Count; i++){
+                Console.WriteLine($"{parent[i]} - {i} : {key[i]}");
+            }
+        }
+
+        // util function to find the vertex with the minimum key value
+        public int MinKey(int[] key, bool[] mstSet){
+            int min = int.MaxValue;
+            int minIndex = -1;
+
+            for(int v = 0; v < graph.Count; v++){
+                if(mstSet[v] == false && key[v] < min){
+                    min = key[v];
+                    minIndex = v;
+                }
+            }
+
+            return minIndex;
+        }
     }
+
 }
