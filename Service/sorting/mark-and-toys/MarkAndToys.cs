@@ -19,7 +19,8 @@ public class MarkAndToys {
         var n = prices.Length;
         var totalCost = 0;
         var numToys = 0;
-        //prices.Sort();
+        
+        Array.Sort(prices);
         for(var i = 0; i < n; i++){
             if(totalCost + prices[i] <= k){
                 totalCost += prices[i];
