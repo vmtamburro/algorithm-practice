@@ -46,27 +46,27 @@ public class FraudulentActivityCountingAlgorithm {
         int sum = 0;
         int median1 = -1, median2 = -1;
 
-        if (d % 2 == 1) {
+        if (d % 2 == 1) { // odd number of elements
             // Find the middle element
             for (int i = 0; i < count.Length; i++) {
-                sum += count[i];
-                if (sum >= d / 2 + 1) {
+                sum += count[i]; // sum of elements so far
+                if (sum >= d / 2 + 1) { // check odd return factor
                     return i;
                 }
             }
-        } else {
+        } else { // even number of elements
             // Find the two middle elements
             for (int i = 0; i < count.Length; i++) {
                 sum += count[i];
-                if (median1 == -1 && sum >= d / 2) {
+                if (median1 == -1 && sum >= d / 2) { // first median condition
                     median1 = i;
                 }
-                if (sum >= d / 2 + 1) {
+                if (sum >= d / 2 + 1) { // second median condition
                     median2 = i;
                     break;
                 }
             }
-            return (median1 + median2) / 2.0;
+            return (median1 + median2) / 2.0; // average the two medians
         }
 
         return 0; // This return should never be reached
