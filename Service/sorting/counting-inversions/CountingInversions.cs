@@ -34,26 +34,31 @@ public class CountingInversions {
 
     // Merge two sorted arrays and count inversions
     public static int MergeAndCount(int[] arr, int left, int middle, int right) {
+        // size of the left subarray
         int n1 = middle - left + 1;
+        // size of the right subarray
         int n2 = right - middle;
+        // create two arrays for left and right subarrays
         int[] L = new int[n1];
         int[] R = new int[n2];
         Array.Copy(arr, left, L, 0, n1);
         Array.Copy(arr, middle + 1, R, 0, n2);
 
+        // initialize indices for left, right, and merged subarrays
         int i = 0, j = 0, k = left;
+        // initialize inversion count
         int count = 0;
 
         while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
+            if (L[i] <= R[j]) { // check if the first left index is less than or equal to the first right index
+                arr[k] = L[i]; // assign the left index to the merged array
                 i++;
                 k++;
-            } else {
-                arr[k] = R[j];
+            } else { // this is an inversion
+                arr[k] = R[j]; // the right index is less than the left index, assign the right index to the merged array
                 j++;
                 k++;
-                count += n1 - i; // Count inversions. Also account for
+                count += n1 - i; // Count inversions. Also account for the remaining elements in the left array
             }
         }
 
