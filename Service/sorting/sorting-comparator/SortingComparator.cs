@@ -16,8 +16,7 @@ public class Checker : IComparer<Player> {
         // Implement comparator logic here
         // Sort by decreasing score
         if (a.Score != b.Score) {
-            // Fill in code here
-            if(a.Score > b.Score){
+            if(a.Score < b.Score){
                 return -1;
             }else{
                 return 1;
