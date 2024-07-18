@@ -19,7 +19,10 @@ public class RadixSort
 
     private static int FindMaxNumber(int[] array)
     {
+        // Assume array has at least one element
         int maxNumber = array[0];
+
+        // Find the maximum number in the array
         for (int i = 1; i < array.Length; i++)
         {
             if (array[i] > maxNumber)
@@ -34,7 +37,7 @@ public class RadixSort
         while (number > 0)
         {
             digits++;
-            number /= 10;
+            number /= 10; // Remove the last digit
         }
         return digits;
     }
@@ -42,15 +45,15 @@ public class RadixSort
     private static int[] CountingSortByDigit(int[] array, int digit)
     {
         int[] sortedArray = new int[array.Length];
-        int[] count = new int[10];
+        int[] count = new int[10]; // create an array to store the count of each digit
 
-        int divisor = (int)Math.Pow(10, digit);
+        int divisor = (int)Math.Pow(10, digit); // calculate the divisor to extract the digit
         
         // Counting occurrences of digits
         foreach (int number in array)
         {
-            int digitValue = (number / divisor) % 10;
-            count[digitValue]++;
+            int digitValue = (number / divisor) % 10; // extract the digit
+            count[digitValue]++;// increment the count of the digit
         }
 
         // Calculate cumulative count
