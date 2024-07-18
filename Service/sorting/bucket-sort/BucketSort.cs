@@ -11,6 +11,7 @@ public class BucketSort
 
         // get the number of buckets to use
         int numberOfBuckets = array.Length;
+        //array of float lists to store the buckets
         List<float>[] buckets = new List<float>[numberOfBuckets];
 
         // Initialize buckets
