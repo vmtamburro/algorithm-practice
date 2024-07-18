@@ -5,9 +5,11 @@ public class BucketSort
 {
     public static void Sort(float[] array)
     {
+        // return if array is empty
         if (array.Length == 0)
             return;
 
+        // get the number of buckets to use
         int numberOfBuckets = array.Length;
         List<float>[] buckets = new List<float>[numberOfBuckets];
 
@@ -20,7 +22,9 @@ public class BucketSort
         // Distribute input array values into buckets
         foreach (float value in array)
         {
+            // calculate the bucket index for each value
             int bucketIndex = (int)(value * numberOfBuckets);
+            // add the value to the corresponding bucket
             buckets[bucketIndex].Add(value);
         }
 
@@ -28,7 +32,9 @@ public class BucketSort
         int index = 0;
         foreach (var bucket in buckets)
         {
+            // sort the current bucket
             bucket.Sort();
+            // add the sorted values to the original array
             foreach (var value in bucket)
             {
                 array[index++] = value;
