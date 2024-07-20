@@ -9,7 +9,7 @@ public class LargestRectangle{
         - Index 4 is 2. Can extend from 3 to 5. So area from [3, 5] is 6.
     */
 
-    public int LargestRectangleAre(int[] heights){
+    public int LargestRectangleArea(int[] heights){
         int maxArea = 0;
 
         // loop through the heights array
@@ -27,4 +27,46 @@ public class LargestRectangle{
 
         return maxArea;
     }
+
+    public int LargestRectangleAreaUsingStack(int[] heights){
+        var stack = new Stack<int>();
+        int maxArea = 0;
+        int index = 0;
+        while(index < heights.Length){
+            // If the stack is empty or the current bar is taller than the bar at the top of the stack
+            if(stack.Count == 0 || heights[index] >= heights[stack.Peek()]){
+                stack.Push(index);
+                index++;
+            }else{
+                // pop the top and calculate the area
+                int topOfStack = stack.Pop();
+                // get the height of the bar corresponding to the popped index
+                int height = heights[topOfStack];
+                // calculate the width of the rectangle:
+                // If the stack is empty, it means the popped bar was the smallest bar so far, 
+                // so the width is the distance from the start to the current index.
+                // Otherwise, the width is the distance between the current index and the new top of the stack index minus one.
+                int width = stack.Count == 0 ? index : index - stack.Peek() - 1;
+                maxArea = Math.Max(maxArea, height * width);
+            }
+        }
+
+        // After processing the bars, handle any remaining indices in the stack
+        while (stack.Count > 0) {
+            // Pop the top index from the stack
+            int topOfStack = stack.Pop();
+            // Get the height of the bar corresponding to the popped index
+            int height = heights[topOfStack];
+            // Calculate the width of the rectangle:
+            // If the stack is empty, the width extends from the start to the end of the histogram.
+            // Otherwise, the width is the distance between the end of the histogram and the new top of the stack index minus one.
+            int width = stack.Count == 0 ? index : index - stack.Peek() - 1;
+            // Update the maximum area with the area of the rectangle using the popped height and calculated width
+            maxArea = Math.Max(maxArea, height * width);
+        }
+
+        // Return the maximum area found
+        return maxArea;
+    }
+
 }
