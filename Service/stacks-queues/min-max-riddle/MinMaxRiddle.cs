@@ -49,5 +49,53 @@ public class MinMaxRiddle{
         return result;
     }
 
-    
+    public int[] MinMaxRiddle2(int[] arr)
+    {
+        int n = arr.Length;
+        int[] result = new int[n];
+
+        // Arrays to store previous and next smaller elements
+        int[] left = new int[n];
+        int[] right = new int[n];
+
+        // Stack to find previous smaller elements
+        Stack<int> s = new Stack<int>();
+
+        // Fill left[] using a stack
+        for (int i = 0; i < n; i++)
+        {
+            while (s.Count > 0 && arr[s.Peek()] >= arr[i])
+                s.Pop();
+            left[i] = s.Count == 0 ? -1 : s.Peek();
+            s.Push(i);
+        }
+
+        // Clear stack to be reused for finding next smaller elements
+        s.Clear();
+
+        // Fill right[] using a stack
+        for (int i = n - 1; i >= 0; i--)
+        {
+            while (s.Count > 0 && arr[s.Peek()] >= arr[i])
+                s.Pop();
+            right[i] = s.Count == 0 ? n : s.Peek();
+            s.Push(i);
+        }
+
+        // Initialize result array with the minimum values
+        for (int i = 0; i < n; i++)
+        {
+            int length = right[i] - left[i] - 1;
+            result[length - 1] = Math.Max(result[length - 1], arr[i]);
+        }
+
+        // Fill the result array with the maximum of minimum values for every window size
+        for (int i = n - 2; i >= 0; i--)
+        {
+            result[i] = Math.Max(result[i], result[i + 1]);
+        }
+
+        return result;
+    }
+
 }
