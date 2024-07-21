@@ -49,8 +49,9 @@ public class MinMaxRiddle{
         return result;
     }
 
-    public int[] MinMaxRiddle2(int[] arr)
+    public int[] MinMaxRiddle2()
     {
+         int[] arr = {6, 3, 5, 1, 12};
         int n = arr.Length;
         int[] result = new int[n];
 

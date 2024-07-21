@@ -13,7 +13,7 @@ namespace app
             //var test = CountingInversions.CountInversions(new int[] { 38, 27, 43, 3, 9, 82, 10 });
             //PrimsAlgorithm();
             var minMaxRiddle = new MinMaxRiddle();
-            minMaxRiddle.MinMaxRiddle1();
+            minMaxRiddle.MinMaxRiddle2();
         }
 
         private static void PrimsAlgorithm()
