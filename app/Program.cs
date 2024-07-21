@@ -12,8 +12,12 @@ namespace app
             //LowestCommonAncestor.Main(["8", "8 4 9 1 2 3 6 5", "1 2"]);
             //var test = CountingInversions.CountInversions(new int[] { 38, 27, 43, 3, 9, 82, 10 });
             //PrimsAlgorithm();
-            var minMaxRiddle = new MinMaxRiddle();
-            minMaxRiddle.MinMaxRiddle2();
+            // var minMaxRiddle = new MinMaxRiddle();
+            // minMaxRiddle.MinMaxRiddle2();
+
+            var _plantService = new PoisonousPlants();
+            _plantService.PoisonousPlants1();
+            _plantService.PoisonousPlants2();
         }
 
         private static void PrimsAlgorithm()
