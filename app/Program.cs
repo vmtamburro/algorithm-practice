@@ -11,8 +11,9 @@ namespace app
             //LinkedListPractice();
             //LowestCommonAncestor.Main(["8", "8 4 9 1 2 3 6 5", "1 2"]);
             //var test = CountingInversions.CountInversions(new int[] { 38, 27, 43, 3, 9, 82, 10 });
-            PrimsAlgorithm();
-
+            //PrimsAlgorithm();
+            var minMaxRiddle = new MinMaxRiddle();
+            minMaxRiddle.MinMaxRiddle1();
         }
 
         private static void PrimsAlgorithm()
