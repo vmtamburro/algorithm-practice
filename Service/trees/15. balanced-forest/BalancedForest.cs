@@ -22,7 +22,7 @@ public class BalancedForest{
             int u = edges[i, 0] - 1;
             int v = edges[i, 1] - 1;
             adj[u].Add(v);
-            adj[v].add(u);
+            adj[v].Add(u);
         }
 
         int totalSum = values.Sum();
