@@ -54,7 +54,7 @@ public class BSTImplementation{
             node.val = MinValue(node.right);
             node.right = Delete(node.right, node.val);
         }
-
+        return node;
         
     }
 
