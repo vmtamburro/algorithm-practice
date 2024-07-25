@@ -1,9 +1,9 @@
-public class HashTable<TKey, TValue>
+public class HashTableSimple<TKey, TValue>
 {
     private const int InitialCapacity = 16;
     private LinkedList<KeyValuePair<TKey, TValue>>[] buckets;
 
-    public HashTable()
+    public HashTableSimple()
     {
         this.buckets = new LinkedList<KeyValuePair<TKey, TValue>>[InitialCapacity];
         for (int i = 0; i < buckets.Length; i++)

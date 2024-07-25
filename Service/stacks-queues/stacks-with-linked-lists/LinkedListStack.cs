@@ -43,22 +43,3 @@ public class LinkedListStack<T>
 
     public bool IsEmpty => _top == null;
 }
-
-public class Program
-{
-    public static void Main()
-    {
-        var stack = new LinkedListStack<int>();
-        
-        stack.Push(1);
-        stack.Push(2);
-        stack.Push(3);
-        
-        Console.WriteLine(stack.Peek()); // Outputs: 3
-        Console.WriteLine(stack.Pop());  // Outputs: 3
-        Console.WriteLine(stack.Peek()); // Outputs: 2
-        
-        stack.Push(4);
-        Console.WriteLine(stack.Pop());  // Outputs: 4
-    }
-}

@@ -51,22 +51,3 @@ public class ArrayStack<T>
         _array = newArray;
     }
 }
-
-public class Program
-{
-    public static void Main()
-    {
-        var stack = new ArrayStack<int>();
-        
-        stack.Push(1);
-        stack.Push(2);
-        stack.Push(3);
-        
-        Console.WriteLine(stack.Peek()); // Outputs: 3
-        Console.WriteLine(stack.Pop());  // Outputs: 3
-        Console.WriteLine(stack.Peek()); // Outputs: 2
-        
-        stack.Push(4);
-        Console.WriteLine(stack.Pop());  // Outputs: 4
-    }
-}
