@@ -18,6 +18,17 @@ public class RandomPractice_Arrays{
     }
 
     public void Deletion(){
+        int[] array = { 1, 2, 3, 4, 5 };
+        int indexToDelete = 2;
+        int[] newArray = new int[array.Length - 1];
+
+        // Copy elements before the deletion point
+        Array.Copy(array, newArray, indexToDelete);
+
+        // Copy elements after the deletion point
+        Array.Copy(array, indexToDelete + 1, newArray, indexToDelete, array.Length - indexToDelete - 1);
+
+        Console.WriteLine(string.Join(", ", newArray)); // Output: 1, 2, 4, 5
 
     }
 
