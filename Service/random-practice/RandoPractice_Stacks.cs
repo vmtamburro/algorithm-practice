@@ -46,4 +46,57 @@ public class RandoPractice_Stacks
         }
     }
 
+    public class ListNode
+    {
+        public int Value;
+        public ListNode Next;
+
+        public ListNode(int value)
+        {
+            Value = value;
+            Next = null;
+        }
+    }
+
+    public class LinkedListStack
+    {
+        private ListNode top;
+
+        public void Push(int value)
+        {
+            ListNode newNode = new ListNode(value);
+            newNode.Next = top;
+            top = newNode;
+        }
+
+        public int Pop()
+        {
+            if (top == null)
+            {
+                throw new InvalidOperationException("Stack underflow");
+            }
+            int value = top.Value;
+            top = top.Next;
+            return value;
+        }
+
+        public int Peek()
+        {
+            if (top == null)
+            {
+                throw new InvalidOperationException("Stack is empty");
+            }
+            return top.Value;
+        }
+
+        public bool IsEmpty()
+        {
+            return top == null;
+        }
+    }
+
+
+
+
+
 }
