@@ -94,9 +94,4 @@ public class RandoPractice_Stacks
             return top == null;
         }
     }
-
-
-
-
-
 }
