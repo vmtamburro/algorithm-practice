@@ -20,3 +20,14 @@ public int FindMissingInteger(int[] A){
 
     return smallestPositiveInteger;
 }
+
+
+public int FindMissingInteger(int[] A){
+    HashSet<int> set = new HashSet<int>(A);
+
+    int smallestPossibleInteger = 1;
+    while(set.Contains(smallestPossibleInteger)){
+        smallestPossibleInteger++;
+    }
+    return smallestPossibleInteger;
+}
