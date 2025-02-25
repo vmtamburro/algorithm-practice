@@ -20,3 +20,23 @@ public int FindMissingInteger(int[] nums){
 
     return -1; // Default return, though logically this shouldn't happen.
 }
+
+
+// Optimized solution for Space Complexity
+public int FindMissingInteger(int[] nums){
+    var set = new HashSet<int>(nums);
+    int n = nums.Length;
+    
+    // The expected sum of the first N+1 integers
+    int expectedSum = (n + 1) * (n + 2) / 2; 
+    
+    // The actual sum of the elements in the array
+    int actualSum = 0;
+    
+    foreach(var num in nums){
+        actualSum += num;
+    }
+    
+    // The missing number is the difference between the expected sum and the actual sum
+    return expectedSum - actualSum;
+}
