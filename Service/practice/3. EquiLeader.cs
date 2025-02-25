@@ -14,54 +14,52 @@ int[] A = {4, 3, 4, 4, 4, 2};
 - Index S = 4, left part = {4, 3, 4, 4, 4}, right part = {2}, no leader on right
 */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-public int CountEquiLeaders(int[] A){
-    // Find the leader of the whole array
-    int leader = FindLeader(A);
-    if(leader == -1){
-        return 0; // No Leader Found
+public class Solution {
+    public int CountEquiLeaders(int[] A) {
+        int leader = FindLeader(A);
+        if (leader == -1) return 0; // No leader found
+
+        int equiLeaders = 0;
+        int leftCount = 0;
+        int totalLeaderCount = A.Count(x => x == leader);
+        int N = A.Length;
+
+        for (int i = 0; i < N - 1; i++) { 
+            if (A[i] == leader) leftCount++; 
+            int leftSize = i + 1;
+            int rightSize = N - leftSize;
+            int rightCount = totalLeaderCount - leftCount;
+
+            if (leftCount > leftSize / 2 && rightCount > rightSize / 2) {
+                equiLeaders++;
+            }
+        }
+        return equiLeaders;
     }
 
-    // Find all potential splits of the array with n as the leader
-    var equiLeaders = 0;
-    for(var i = 0; i < A.Length; i++){
-        var rightSplit = A.Take(i + 1).ToArray(); 
-        var leftSplit =  A.Skip(i + 1).ToArray();
-        var leftLeader = FindLeader(leftSplit);
-        var rightLeader = FindLeader(rightSplit);
+    private int FindLeader(int[] A) {
+        var countValues = new Dictionary<int, int>();
+        int maxCount = 0;
+        int candidate = -1;
+        int halfLength = A.Length / 2;
 
-        if(leftLeader == -1 || rightLeader == -1){ // check if either or don't contain a leader
-            continue;
+        foreach (int num in A) {
+            if (countValues.ContainsKey(num)) {
+                countValues[num]++;
+            } else {
+                countValues[num] = 1;
+            }
+
+            if (countValues[num] > maxCount) {
+                maxCount = countValues[num];
+                candidate = num;
+            }
         }
 
-        if(leftLeader == leader && rightLeader == leader){ // check if the leader of the left and right parts is the same as the leader of the whole array
-            equiLeaders++;
-        }
+        return maxCount > halfLength ? candidate : -1;
     }
-}
-
-public int FindLeader(int[] A){
-    var countValues = new Dictionary<int, int>();
-    var maxCount = 0;
-    var candidate = -1;
-    var halfLength = A.Length / 2;
-    for(var i = 0; i < A.Length; i++){
-        if(countValues.ContainsKey(A[i])){
-            countValues[A[i]]++;
-        }
-        else{
-            countValues[A[i]] = 1;
-        }
-        if(countValues[A[i]] > maxCount ){
-            maxCount = countValues[A[i]];
-            candidate = A[i];
-        }   
-    }
-
-    if(maxCount > halfLength){
-        return candidate;
-    }
-
-    return -1; // no leader found
-
 }
