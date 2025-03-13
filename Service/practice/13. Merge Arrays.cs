@@ -26,6 +26,7 @@ public class Solution {
         ptr2 = 1, val2 = 2
         val2 >= val1? yes - insert
         [1, 2, 3, 0, 0, 0]
+        [1, 2, 2, 3, 0, 0]
             SHIFT AND INSERT
             n = ptr1 (1)
             start from the right side 
