@@ -36,45 +36,25 @@ public class Solution {
     
     */
     public int RemoveDuplicates(int[] nums) {
-        var frequencyDict = new Dictionary<int, int>();
-        var maxDupes = 2;
-        var index = 0;
-        var cleanedArrayLength = nums.Length; // keep track of the length while we are cleaning dupes
-        Console.WriteLine($"Length: {nums.Length}");
+    if (nums.Length == 0) return 0;
 
-        while(index < cleanedArrayLength){
-            var num = nums[index];
+    int maxDupes = 2;
+    int writeIndex = 1;
+    int count = 1;
 
-            // add or increment dictionary value
-            if(frequencyDict.ContainsKey(num)){
-                frequencyDict[num]++;
-            } else {
-                frequencyDict.Add(num, 1);
-            }
-            Console.WriteLine($"Num: {num}, Frequency: {frequencyDict[num]}");
-
-            // evaluate if we need to shift
-            if(frequencyDict[num] > maxDupes){
-                Console.WriteLine($"Shifting: {num}");
-                Console.WriteLine(String.Join(", ", nums));
-
-
-                var shiftIndex = index + 1;
-                Console.WriteLine(shiftIndex);
-                while(cleanedArrayLength > shiftIndex){
-                    Console.WriteLine($"Shifting: {nums[shiftIndex]} to {nums[shiftIndex - 1]}");
-                    nums[shiftIndex - 1] = nums[shiftIndex];
-                    Console.WriteLine(String.Join(", ", nums));
-                    shiftIndex++;
-                }
-                cleanedArrayLength--;
-                Console.WriteLine("Cleaned Array Length: " + cleanedArrayLength);
-                Console.WriteLine(String.Join(", ", nums));
-            }
-            else{
-                index++;
-            }
+    for (int i = 1; i < nums.Length; i++) {
+        if (nums[i] == nums[i - 1]) {
+            count++;
+        } else {
+            count = 1;
         }
-        return cleanedArrayLength;
+
+        if (count <= maxDupes) {
+            nums[writeIndex] = nums[i];
+            writeIndex++;
+        }
     }
+
+    return writeIndex;
+}
 }
