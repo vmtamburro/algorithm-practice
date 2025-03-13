@@ -90,47 +90,34 @@ public class Solution {
     - Don't need to start the shifting if both values are zero
 
 
+    Optimized Solution:
+    * Loop through the arrays backward
+    * Take whichever is the highest one and stick it in the furthest index
+    * Takes care of the shifting in one go. O(n + m solution) 
+
 
     */
     public void Merge(int[] nums1, int m, int[] nums2, int n) {
-        var ptr1 = 0;
-        var ptr2 = 0;
-        //Console.WriteLine($"m:{m} n:{n}");
+    int p1 = m - 1; // Pointer for the end of the initialized part of nums1
+    int p2 = n - 1; // Pointer for the end of nums2
+    int p = m + n - 1; // Pointer for the end of nums1
 
-        while(ptr2 < n){
-            var val1 = nums1[ptr1];
-            var val2 = nums2[ptr2];
-            //Console.WriteLine($"ptr1: {ptr1}, ptr2: {ptr2}");
-            //Console.WriteLine($"val1: {nums1[ptr1]}, val2: {nums2[ptr2]}");
-
-             if(val1 == 0){
-                //Console.WriteLine("replace");
-                //replace
-                nums1[ptr1] = val2;
-                ptr2++;
-            }
-
-            if(val1 >= val2 ){
-                //shift and insert
-                //Console.WriteLine("shift and insert");
-                var lastIndex = nums1.Length - 1;
-                //Console.WriteLine("length of nums1" + nums1.Length);
-                
-                var insertingIndex = ptr1 + 1;
-                while(lastIndex > insertingIndex){ // need to be careful not to wipe something necessary
-                    //Console.WriteLine($">> Shifting index {lastIndex - 1} value {nums1[lastIndex - 1]} to index {lastIndex} value {nums1[lastIndex]}");
-                    nums1[lastIndex] = nums1[lastIndex - 1];
-                    lastIndex --;
-                }
-                //Console.WriteLine($"new value at index {insertingIndex}: {val2}");
-                nums1[insertingIndex] = val2;
-            
-                ptr2++;
-            }
-            ptr1++;
-            
-            //Console.WriteLine(String.Join(",", nums1));
+    while (p1 >= 0 && p2 >= 0) {
+        if (nums1[p1] > nums2[p2]) {
+            nums1[p] = nums1[p1];
+            p1--;
+        } else {
+            nums1[p] = nums2[p2];
+            p2--;
         }
-
+        p--;
     }
+
+    // If there are remaining elements in nums2, copy them
+    while (p2 >= 0) {
+        nums1[p] = nums2[p2];
+        p2--;
+        p--;
+    }
+}
 }
