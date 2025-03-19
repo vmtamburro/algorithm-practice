@@ -35,6 +35,7 @@
 ### Messages, Queues, & Event Driven Architecture
 * Kafka, RabbitMQ, AWS SQS for asynchronous processing
 * Pub/Sub Model. Used for decoupling microservices
+  * Publishers send messages to a topic, Subscribers listen to topics and receive messages when available.
 
 ### Microservices & API Design
 * Monolithic vs Microservices
