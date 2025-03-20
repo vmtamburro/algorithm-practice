@@ -62,3 +62,25 @@
 3. Design a Distributed File Storage System
 4. Design a Real-Time Messaging App
 5. Design a Recommendation System
+
+
+---
+
+### ** Data Engineering Services & Technologies Cheat Sheet**
+| **Category**            | **Technologies/Services** | **What to Focus On** |
+|------------------------|----------------------|------------------|
+| **Data Ingestion (Batch & Streaming)** | Kafka, Pub/Sub, Kinesis, Flume | How streaming data pipelines work, event-driven architecture |
+| **Data Processing (Batch)** | Apache Spark, Hadoop MapReduce, Dataflow | How distributed processing works, optimizations |
+| **Data Processing (Streaming)** | Kafka Streams, Apache Flink, Apache Beam | How real-time event processing works |
+| **ETL Orchestration** | Apache Airflow, AWS Step Functions, Prefect | DAG scheduling, retry mechanisms, dependencies |
+| **Data Storage (Cloud & On-Prem)** | Amazon S3, Google Cloud Storage, HDFS | How to store large-scale data efficiently |
+| **Data Warehousing** | BigQuery, Snowflake, Amazon Redshift | Columnar storage, partitioning, indexing for fast queries |
+| **NoSQL Databases** | DynamoDB, Cassandra, MongoDB, Bigtable | Trade-offs vs. SQL, use cases for unstructured data |
+| **SQL Databases** | PostgreSQL, MySQL, SQL Server | Query optimization, indexing, partitioning |
+| **Message Queues & Pub/Sub** | Kafka, RabbitMQ, AWS SNS/SQS | How pub/sub systems work, async processing |
+| **Data Modeling** | Star Schema, Snowflake Schema, OLAP vs. OLTP | Best practices for analytical queries |
+| **Microservices Communication** | REST APIs, gRPC, WebSockets, Message Queues | When to use each for data pipelines |
+| **Big Data File Formats** | Parquet, Avro, ORC, JSON, CSV | How columnar formats improve performance |
+| **Cloud Platforms** | AWS (S3, Glue, Lambda), GCP (BigQuery, Dataflow) | How these services fit into data pipelines |
+| **Monitoring & Logging** | Prometheus, Grafana, CloudWatch | How to track data pipeline performance |
+| **Machine Learning in Data Pipelines** | Spark ML, TensorFlow, Kubeflow | ML model deployment in data workflows (optional) |
